@@ -29,6 +29,5 @@ EXPOSE 8000
 
 
 #RUN python3 /app/manage.py migrate
-RUN python3 manage.py migrate --verbosity 3
 WORKDIR /app/pygoat/
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers","6", "pygoat.wsgi"]
