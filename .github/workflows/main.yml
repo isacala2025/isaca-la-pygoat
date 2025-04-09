@@ -39,9 +39,11 @@ jobs:
 
       - name: Set up Docker
         uses: docker/setup-buildx-action@v2
+        with:
+          driver: docker
 
       - name: Build Docker Image
-        run: docker build --load -f Dockerfile -t myapp:latest .
+        run: docker build -t myapp:latest .
 
       - name: Docker Scout Scan
         uses: docker/scout-action@v1.0.9
