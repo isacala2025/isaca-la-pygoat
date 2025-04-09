@@ -44,10 +44,10 @@ jobs:
         run: docker build -f Dockerfile -t myapp:latest .
 
       - name: Docker Scout Scan
-        uses: docker/scout-action@v1
+        uses: docker/scout-action@v1.0.9
         with:
           dockerhub-user: ${{ secrets.REPO_USER }}
           dockerhub-password: ${{ secrets.REPO_PWD }}
           command: quickview,cves
-        env:
-           SCOUT_DEBUG: 1
+          only-severities: critical,high
+          sarif-file: scout-report.sarif
